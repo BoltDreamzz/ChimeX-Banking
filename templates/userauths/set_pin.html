@@ -1,0 +1,138 @@
+{%extends 'partials/base2.html'%}
+{%block title%}Verify{%endblock%}
+{%load static%}
+
+{%block content%}
+<style>
+    .fa-minus {
+        font-size: 3rem;
+        color: black;
+    }
+
+    .container-t {
+        margin: 30px 0;
+        padding: 0;
+        width: 100%;
+        border-radius: 15px 70px 15px 15px;
+        min-height: 45vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: url("{% static 'shop_media/log.jpg' %}") no-repeat;
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
+        /* Ensure the pseudo-element does not overflow the container */
+    }
+
+    .brr {
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        line-height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .max {
+        font-size: 0.8rem;
+        max-width: 600px;
+        margin-bottom: 10px;
+    }
+
+    .okay a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 60px;
+        padding: 10px 30px;
+        background: #000;
+        border-radius: 15px;
+        color: #fff;
+        font-size: 1.2rem;
+    }
+
+    .text-muted-2 {
+        color: #b6b6b681;
+    }
+
+    .otp-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Space between each input */
+    }
+
+.otp-input {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.otp-input:focus {
+    border-color: #2196F3;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+}
+</style>
+
+<div class="d-flex pos justify-content-around align-items-center p-3">
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus"></i></a>
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus"></i></a>
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus"></i></a>
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus text-muted-2"></i></a>
+</div>
+<h3 class="h4 fw-bold">Verify code</h3>
+<p class="max">
+    Please enter the otp code that has been sent to your email, The code will expire after 15 minutes.
+</p>
+<br>
+<div class="d-flex justify-content-start gap-2">
+    <h6 class="fw-bold text-muted">youremail3455@gmail.com</h6>
+    <a href="#" class="fw-bold text-success">Change</a>
+</div>
+<div class="content d-flex py-4 flex-column mb-5">
+    <div class="col-12 my-2">
+        <div class="otp-container">
+            <input type="text" maxlength="1" class="otp-input"/>
+            <input type="text" maxlength="1" class="otp-input"/>
+            <input type="text" maxlength="1" class="otp-input"/>
+            <input type="text" maxlength="1" class="otp-input"/>
+            <input type="text" maxlength="1" class="otp-input"/>
+            <input type="text" maxlength="1" class="otp-input"/>
+        </div>
+        <script src="script.js"></script>
+    </div>
+    <div class="col-12 my-2">
+        <p class="max">
+            Didn't recieve any code ? <span class="text-success fw-bold"><a href="#"
+                                                                            class="text-decoration-none text-success">Resend</a></span>
+            <br>
+            <span class="text-success fw-bold"><a href="#"
+                                                  class="text-decoration-none text-success">Call instead</a></span>
+
+        </p>
+        <script src="script.js"></script>
+    </div>
+</div>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="otp" placeholder="Enter OTP" required>
+    <button type="submit">Verify OTP</button>
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</form>
+<div class="d-flex okay container fixed-bottom mb-3 gap-3 justify-content-center text-center align-items-center">
+    <a href="{%url 'userauths:enter_pin'%}" class="login bg-body-tertiary text-dark fw-bold w-25"><i
+            class="bi bi-chevron-left"></i></a>
+    <a href="{%url 'userauths:finish'%}" class="reg fw-bold w-75">Next</a>
+
+</div>
+{%endblock%}

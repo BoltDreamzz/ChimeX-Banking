@@ -1,0 +1,81 @@
+{%extends 'partials/base2.html'%}
+{%block title%}Splash{%endblock%}
+{%load static%}
+
+{%block content%}
+<style>
+    .fa-minus {
+        font-size: 3rem;
+        color: black;
+    }
+    .container-t {
+        margin: 30px 0;
+        padding: 0;
+        width: 100%;
+        border-radius: 15px 70px 15px 15px;
+        min-height: 45vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;       
+        background: url("{% static 'shop_media/log.jpg' %}") no-repeat;
+        background-position: center;
+        background-size: cover;
+        overflow: hidden; /* Ensure the pseudo-element does not overflow the container */
+}
+
+.brr {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 60px;
+    margin-bottom: 20px;
+}
+.max {
+    font-size: 0.8rem;
+    max-width: 600px;
+    margin-bottom: 35px;
+}
+.okay a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    padding: 10px 30px;
+    background: #000;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+</style>
+
+<!-- <div class="d-flex pos justify-content-around align-items-center p-3">
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus"></i></a>
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus disabled"></i></a>
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus disabled"></i></a>
+    <a href="#" class="text-decoration-none"><i class="fa-solid fa-minus disabled"></i></a>
+</div> -->
+<!--<div class="container-t">-->
+
+<!--</div>-->
+<div class="d-flex justify-content-center">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://lottie.host/1f3b7670-23bb-4bdd-ab94-e1c02c011f5c/HLclm6Z4S4.json" background="##fff"
+                   speed="1" style="width: 350px; height: 350px" loop autoplay direction="1"
+                   mode="normal">
+    </lottie-player>
+</div>
+
+<h2 class="brr">Reach your <br>goals effortlessly</h2>
+<p class="max">
+    Start managing and investing your funds in the right way, getting the most of all that is, in the <span
+        class="fw-bold">Web-3</span>
+    and financial markets.
+</p>
+<div class="d-flex okay gap-3 justify-content-center text-center align-items-center">
+    <a href="{%url 'userauths:login'%}" class="login bg-body-tertiary text-dark fw-bold">Login</a>
+    <a href="{%url 'userauths:register'%}" class="reg fw-bold">Get started</a>
+
+</div><br><br>
+{%endblock%}
